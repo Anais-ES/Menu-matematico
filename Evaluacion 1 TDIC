@@ -1,0 +1,115 @@
+Proceso Menú_matemático
+	Definir op, op2, a1, b1, c1, a2, b2, c2, an, n, d, Sn, resultado, a, b, x, z, Dx, Dz Como Real;
+	Definir integral_posible, sistema_resuelto Como Logico;
+	op = 0;
+	op2=0;
+	integral_posible = falso;
+	sistema_resuelto = falso;
+	
+    Mientras op <= 5 Hacer
+        Escribir "===== Calculadora ====="; 
+		Escribir "Indique el número de la opción que desea resolver";
+        Escribir "1. Una progesión aritmética";
+        Escribir "2. Una integral definida";
+        Escribir "3. Un sistema de ecuaciones de 2x2";
+        Escribir "4. Cerrar el programa";
+		Leer op;
+		
+        Segun op Hacer
+            Caso 1:
+                Escribir "**** Has elegido resolver una progresión aritmética (PA) ****";
+				Escribir"usando las siguientes expresiones: ";
+				Escribir"a) Enésimo Término: an = a1 + (n-1) * d";
+			    Escribir "b) Suma de los términos: Sn = (n/2) * (a1+an)";
+				Escribir "sea:";
+			    Escribir "a1:el primer término de la PA";
+				Escribir "n:el número de orden del término de la sucesión";
+			    Escribir "d: la diferencia o razón de la PA";
+				Escribir "Ingresa a1 ";
+				Leer a1;
+				Escribir "Ingresa d ";
+				leer d;
+				Escribir "el an=" a1 "+(n-1)*" d;
+				Escribir "Ingresa un número n mayor que 3, que corresponderá al número de orden del término de la sucesión ";
+				leer n;
+				Mientras n <= 3 Hacer
+					Escribir "El número de términos debe ser mayor que 3. Ingrese nuevamente: ";
+					Leer n;
+				FinMientras
+				an = a1 + (n-1)*d;
+				Escribir "El término a_n de la progresión aritmética es ", an;
+				Sn = n/2 *(a1+an);
+				Escribir "el Sn=" n "/2" "*" "(" a1 "+" an ")";
+				Escribir "La suma de los términos de la PA es: ", Sn;
+				
+			Caso 2:
+				Escribir"**** Has elegido resolver una integral definida ****";
+				Escribir "la integral se define como:";
+				Mientras No integral_posible Hacer
+					Escribir "Ingrese el valor de a (límite inferior):";
+					Leer a;
+					Escribir "Ingrese el valor de b (límite superior):";
+					Leer b;
+					
+					Si a < b Entonces
+						Si a <> 2 Y b <> 2 Entonces
+							integral_posible = Verdadero;
+						Sino
+							Escribir "Error: Los valores de a y b no deben ser 2.";
+						FinSi
+					Sino
+						Escribir "Error: El valor de a debe ser menor que b.";
+					FinSi
+				FinMientras
+				Escribir "f(x) =" "Int("  a "a" b  ")" "1/(x-2)" "dx";
+				resultado = ln(Abs(b - 2)) - ln(Abs(a - 2));
+				Escribir "El resultado de la integral es: ", resultado;
+				
+			Caso 3:
+                Escribir "**** Has elegido resolver un sistema de ecuaciones 2x2 ****";
+                Escribir "Las ecuaciones son lineales de 2x2, de la forma:";
+                Escribir "a1*x + b1*z = c1";
+                Escribir "a2*x + b2*z = c2";
+				Escribir "Ingrese los coeficientes de la primera ecuación";
+				Escribir "Ingrese a1";
+				Leer a1;
+				Escribir "Ingrese b1";
+				Leer b1;
+				Escribir "Ingrese c1";
+				Leer c1;
+				Escribir "Ingrese los coeficientes de la segunda ecuación";
+				Escribir "Ingrese a2";
+				Leer a2;
+				Escribir "Ingrese b2";
+				Leer b2;
+				Escribir "Ingrese c2";
+				Leer c2;
+				Escribir "Método de Cramer";
+				D = a1 * b2 - a2 * b1;
+				Dx = c1 * b2 - c2 * b1;
+				Dz = a1 * c2 - a2 * c1;
+				Escribir "D=" a1 "*" b2 "-" a2 "*" b1;
+				Escribir "Dx =" c1 "*" b2 "-" c2 "*" b1;
+				Escribir "Dz =" a1 "*" c2 "-" a2 "*" c1;
+				Si D = 0 Entonces
+					Si Dx = 0 Y Dz = 0 Entonces
+						Escribir "El sistema tiene infinitas soluciones";
+					Sino
+						Escribir "El sistema no tiene solución.";
+					FinSi
+				Sino
+					x = Dx / D;
+					z = Dz / D;
+					Escribir "x = Dx / D";
+					Escribir "z = Dz / D";
+					Escribir "La solución del sistema es: x =", x, "z =", z;
+				FinSi
+			Caso 4: 
+				Escribir "Espero haberte ayudado, nos vemos";
+				
+			De Otro Modo:
+			    Escribir "Opción no válida, por favor elige 1, 2, 3 o 4";
+				op=0;
+		Fin segun
+	Fin Mientras
+FinProceso
